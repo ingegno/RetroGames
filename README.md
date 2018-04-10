@@ -20,6 +20,6 @@ NL: In Snake ben je een slang die aarbeien moet eten. Probeer zo lang mogelijk t
 ## Flappy Bird
 EN: Flappy Bird is very, very difficult. Fly the bird between the holes! One button only needed: Jump!
 
-NL: Flappy Bird is heel, heel moeilijk. Vlieg met de vogel tussen de gaten! Slechts 1 knop nodig: Sprint!
+NL: Flappy Bird is heel, heel moeilijk. Vlieg met de vogel tussen de gaten! Slechts 1 knop nodig: Spring!
 
 ![Flappy Bird](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameFlappy.jpg "Flappy Bird")
