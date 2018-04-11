@@ -7,22 +7,36 @@
 #define TFT_DC   9  // Data/command line for TFT
 #define TFT_RST  8  // Reset line for TFT (or connect to +5V)
 
+#define DIFFICULTY_EASY    100 //wait between updates for easy
+#define DIFFICULTY_MEDIUM   60 //wait between updates for medium
+#define DIFFICULTY_HARD     30 //wait between updates for hard
+
+// digital pins
+#define ROTATELEFT    3  // D3 (A) to rotate left
+#define ROTATERIGHT   2  // D2 (B) to rotate right
+
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 
 #define BUTTON_NONE 0
 #define BUTTON_DOWN 1
 #define BUTTON_RIGHT 2
+#define BUTTON_ROTATELEFT 3
 #define BUTTON_SELECT 3
 #define BUTTON_UP 4
 #define BUTTON_LEFT 5
+#define BUTTON_ROTATERIGHT 6
+
 uint16_t pixelColor;
-uint8_t buttonPressed, currentDirection;
+uint8_t buttonPressed, currentDirection, rotatePressed=false;
 boolean collision, appleOn, displayEnd, specialOn, allowSpecial, showTitle = true;
 int head, timer, snakeSize, score, pixelLocationXAxis, pixelLocationYAxis, x[300], y[300],
     appleX, appleY, yMultiplier, selection = 100, difficulty, specialX, specialY, specialTime;
 
 void setup(void) {
-  pinMode(2, INPUT);
+  //pinMode ( ROTATELEFT, INPUT_PULLUP ); //if no pullup resistor
+  pinMode ( ROTATELEFT, INPUT );
+  //pinMode ( ROTATERIGHT, INPUT_PULLUP );
+  pinMode ( ROTATERIGHT, INPUT );
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(0x0000);
   if (showTitle)
@@ -48,9 +62,13 @@ void setup(void) {
 }
 
 uint8_t readButton(void) {
-  if (digitalRead(2))
+  if (digitalRead(ROTATELEFT))
   {
-      return BUTTON_SELECT;
+      return BUTTON_ROTATELEFT;
+  }
+  else if (digitalRead(ROTATERIGHT))
+  {
+      return BUTTON_ROTATERIGHT;
   }
   else if (analogRead(1) > 600)
   {
@@ -73,8 +91,15 @@ uint8_t readButton(void) {
 
 void loop() {
   uint8_t b = readButton();
-  if (b != BUTTON_NONE && b != BUTTON_SELECT)
+  
+  if (b != BUTTON_NONE)
     buttonPressed = b;
+  else 
+    rotatePressed = false;  // no button pressed needed to unset rotate button
+  if (rotatePressed && !(b == BUTTON_ROTATELEFT || b == BUTTON_ROTATERIGHT)) {
+    //unset rotatepressed
+    rotatePressed = false;
+  }
   if (!collision){
     appleLogic();
     checkIfAppleGot();
@@ -130,7 +155,7 @@ void titleSelection(){
     tft.setCursor(30, 120);
     tft.fillRect(25, 115, 50, 18, ST7735_BLUE);
     tft.print("Hard");
-    difficulty = 60;
+    difficulty = DIFFICULTY_EASY;
   } else if (selection % 3 == 1){ // normal mode
     tft.setCursor(30, 80);
     tft.fillRect(25, 75, 50, 18, ST7735_BLUE);
@@ -141,7 +166,7 @@ void titleSelection(){
     tft.setCursor(30, 120);
     tft.fillRect(25, 115, 50, 18, ST7735_BLUE);
     tft.print("Hard");
-    difficulty = 40;
+    difficulty = DIFFICULTY_MEDIUM;
   } else { // hard mode
     tft.setCursor(30, 80);
     tft.fillRect(25, 75, 50, 18, ST7735_BLUE);
@@ -152,7 +177,7 @@ void titleSelection(){
     tft.setCursor(30, 120);
     tft.fillRect(25, 115, 50, 18, ST7735_RED);
     tft.print("Hard");
-    difficulty = 20;
+    difficulty = DIFFICULTY_HARD;
   }
   
   if(titleButton == BUTTON_SELECT){
@@ -180,8 +205,30 @@ void updateScore(int score){
   tft.print(score);
 }
 
-void updateSnakePosition(uint8_t buttonPressed){
-
+void updateSnakePosition(uint8_t &buttonPressed){
+  //interpret rotation via buttons
+  if (buttonPressed == BUTTON_ROTATELEFT){
+    if (rotatePressed)
+      buttonPressed = currentDirection;
+    else {
+      rotatePressed = true;
+      if (currentDirection == BUTTON_DOWN)      {buttonPressed = BUTTON_RIGHT;}
+      else if (currentDirection == BUTTON_RIGHT){buttonPressed = BUTTON_UP;}
+      else if (currentDirection == BUTTON_UP)   {buttonPressed = BUTTON_LEFT;}
+      else if (currentDirection == BUTTON_LEFT) {buttonPressed = BUTTON_DOWN;}
+    }
+  } else if (buttonPressed == BUTTON_ROTATERIGHT){
+    if (rotatePressed)
+      buttonPressed = currentDirection;
+    else {
+      rotatePressed = true;
+      if (currentDirection == BUTTON_DOWN)      {buttonPressed = BUTTON_LEFT;}
+      else if (currentDirection == BUTTON_LEFT) {buttonPressed = BUTTON_UP;}
+      else if (currentDirection == BUTTON_UP)   {buttonPressed = BUTTON_RIGHT;}
+      else if (currentDirection == BUTTON_RIGHT){buttonPressed = BUTTON_DOWN;}
+    }
+  }
+  
   if (buttonPressed == BUTTON_UP){
     if(currentDirection != BUTTON_DOWN){
       pixelLocationYAxis -= 3;
@@ -376,3 +423,4 @@ void displayEndingScreen(){
   tft.print(score);
   displayEnd = false;
 }
+
