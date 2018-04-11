@@ -61,7 +61,7 @@
 #define BALL_COLOR          CYAN
 #define BALL_MOVE_WAIT      16
 
-#define PADDLE_W            10
+#define PADDLE_W            14
 #define PADDLE_H            5
 #define PADDLE_TOLERANCE    4
 #define PADDLE_COLOR        LIGHTGREEN
@@ -69,7 +69,7 @@
 
 #define BOARD_LEFT          (int)(2)
 #define BOARD_RIGHT         (int)(MAX_X - 2)
-#define BOARD_TOP           23
+#define BOARD_TOP           13
 
 #define TILES_LEFT          (int)(((MAX_X + 1) - ( COLS * TILE_W ) )/ 2)
 #define TILES_TOP           (BOARD_TOP + 2.8 * TILE_H)

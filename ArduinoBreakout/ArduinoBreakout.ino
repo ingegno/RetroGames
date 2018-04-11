@@ -78,8 +78,8 @@ void Tft_drawChar(INT8U ascii, INT16U poX, INT16U poY, INT16U size,
 void Tft_drawChar(INT8U ascii, INT16U poX, INT16U poY,INT16U size, 
                   INT16U fgcolor, INT16U bgcolor )
 {
-  Tft.fillRect(poX, poY, size-1, size-1, bgcolor);
-  Tft.drawChar(poX, poY, ascii, fgcolor, BLACK, size);
+  //Tft.fillRect(poX, poY, size-1, size-1, bgcolor);
+  Tft.drawChar(poX, poY, ascii, fgcolor, bgcolor, size);
 }
 
 void Tft_drawStringWithShadow(char *string, INT16U poX, INT16U poY, 
@@ -318,10 +318,14 @@ class Paddle
         if ( m < -(x - PADDLE_W)) m = -(x - PADDLE_W);
 
         // remove part of the old paddle on the left
-        Tft.fillRect( x + PADDLE_W + m, y, -m, PADDLE_H, BACKGROUND_COLOR);
+        for (int i=0; i<=-m; i++)
+          Tft.drawFastVLine(x + PADDLE_W + m + i, y, PADDLE_H, BACKGROUND_COLOR);
+        //Tft.fillRect( x + PADDLE_W + m, y, -m, PADDLE_H, BACKGROUND_COLOR);
       
         // add a bit more to the left of the existing paddle
-        Tft.fillRect( x - PADDLE_W + m, y, -m, PADDLE_H, PADDLE_COLOR);
+        for (int i=0; i<=-m; i++)
+          Tft.drawFastVLine(x - PADDLE_W +m + i, y, PADDLE_H, PADDLE_COLOR);
+        //Tft.fillRect( x - PADDLE_W + m, y, -m, PADDLE_H, PADDLE_COLOR);
       
         // remember m < 0
         x+=m;
@@ -332,10 +336,14 @@ class Paddle
         if ( m > MAX_X - x - PADDLE_W ) m = MAX_X - x - PADDLE_W;
       
         // remove a part of the old paddle on the right
-        Tft.fillRect( x - PADDLE_W, y, m, PADDLE_H, BACKGROUND_COLOR);
+        for (int i=0; i<=m; i++)
+          Tft.drawFastVLine(x - PADDLE_W + i, y, PADDLE_H, BACKGROUND_COLOR);
+        //Tft.fillRect( x - PADDLE_W, y, m, PADDLE_H, BACKGROUND_COLOR);
       
         // add a bit more  of paddle to the left of the existing paddle
-        Tft.fillRect( x + PADDLE_W, y, m, PADDLE_H, PADDLE_COLOR );
+        for (int i=0; i<=m; i++)
+          Tft.drawFastVLine(x + PADDLE_W + i, y, PADDLE_H, PADDLE_COLOR);
+        //Tft.fillRect( x + PADDLE_W, y, m, PADDLE_H, PADDLE_COLOR );
       
         x+=m;
       }
@@ -578,14 +586,14 @@ class Scoreboard {
     void update( int scored ){
       score+= scored;
       int digits = nDigits(score);
-      Tft_drawNumber(score, (15-digits)*12-3, 4, 1, RED, SCOREBOARD_COLOR);
+      Tft_drawNumber(score, (12-digits)*6, 4, 1, RED, SCOREBOARD_COLOR);
     }
   
     void nextLevel()
     {
       level++;
       int digits = nDigits(level);
-      Tft_drawNumber(level,(20-digits)*12-3, 4, 1, RED, SCOREBOARD_COLOR);
+      Tft_drawNumber(level,(17-digits)*6, 4, 1, RED, SCOREBOARD_COLOR);
     }
   
     void died()
@@ -593,7 +601,7 @@ class Scoreboard {
       lives--;
       if ( lives < 0) return;
       int digits = nDigits(lives);
-      Tft_drawNumber(lives,(24-digits)*12-3, 4, 1, RED, SCOREBOARD_COLOR);
+      Tft_drawNumber(lives,(21-digits)*6, 4, 1, RED, SCOREBOARD_COLOR);
     }
 
     boolean hasLivesLeft()
@@ -632,7 +640,7 @@ class Breakout
 
   public:
   
-    unsigned long last;
+    unsigned long lastb, lastp;
   
     Breakout(): ball(BOARD_LEFT, BOARD_RIGHT - BALL_R * 2, BOARD_TOP, MAX_Y - BALL_R){
     }
@@ -719,12 +727,10 @@ class Breakout
       for(;;)
       {
 
-        unsigned long waited = millis() - last;
-
-        if ( waited > BALL_MOVE_WAIT )
+        if ( millis() - lastb > BALL_MOVE_WAIT )
         {
-          last = millis();
         
+          lastb = millis();
           ball.clear();
           ball.move();
           ball.draw();
@@ -782,9 +788,9 @@ class Breakout
         }
 
         const int m = js.getX();
-        if (waited > PADDLE_MOVE_WAIT && m != 0)
+        if (millis()-lastp > PADDLE_MOVE_WAIT && m != 0)
         {
-          last = millis();
+          lastp = millis();
           paddle.draw(m);
         }
       }
