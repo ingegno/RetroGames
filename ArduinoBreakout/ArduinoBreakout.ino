@@ -28,7 +28,8 @@
 #define TFT_DC   9  // Data/command line for TFT
 #define TFT_RST  8  // Reset line for TFT (or connect to +5V)
 
-#define ROWS                6
+#define STARTROWS           1
+int     ROWS  =     STARTROWS;
 #define COLS                8
 
 //TFT resolution 240*320
@@ -241,9 +242,9 @@ void animateScreen()
 
 class Tiles {
 
-  const int COLORS[ROWS] = { RED, MAGENTA, OLIVE, YELLOW, GREEN, NAVY };
+  const int COLORS[8] = { RED, MAGENTA, OLIVE, YELLOW, GREEN, NAVY, WHITE, MAROON };
   
-  byte tiles[ROWS][COLS];
+  byte tiles[8][COLS];
   
   int tilesLeft;
   
@@ -560,6 +561,8 @@ class Ball
     }
 };
 
+int faster = 0;
+
 class Scoreboard {
   
   int level, lives;
@@ -592,8 +595,11 @@ class Scoreboard {
     void nextLevel()
     {
       level++;
+      // extra live on new level
+      lives++;
       int digits = nDigits(level);
       Tft_drawNumber(level,(17-digits)*6, 4, 1, RED, SCOREBOARD_COLOR);
+      Tft_drawNumber(lives,(21-digits)*6, 4, 1, RED, SCOREBOARD_COLOR);
     }
   
     void died()
@@ -650,6 +656,8 @@ class Breakout
 
       // blank board
 
+      ROWS = STARTROWS;
+      
       Tft.fillRect(0,            0, MAX_X,             BOARD_TOP,            SCOREBOARD_COLOR);
       Tft.fillRect(0,            0, BOARD_LEFT - 1,    MAX_Y - PADDLE_H - 2, SCOREBOARD_COLOR);
       Tft.fillRect(BOARD_RIGHT,  0, TILE_W / 2,        MAX_Y - PADDLE_H - 2, SCOREBOARD_COLOR);
@@ -727,7 +735,7 @@ class Breakout
       for(;;)
       {
 
-        if ( millis() - lastb > BALL_MOVE_WAIT )
+        if ( millis() - lastb > (BALL_MOVE_WAIT - faster) )
         {
         
           lastb = millis();
@@ -802,7 +810,13 @@ class Breakout
       // PLEASE LEAVE PIN FLOATING
     
       randomSeed(analogRead(2));
-
+      //extra rows
+      ROWS++;
+      if (ROWS > 8) {ROWS=8;}
+      //faster
+      faster++;
+      if (faster > BALL_MOVE_WAIT - 3) faster--;
+      //redraw
       tiles.drawAll();
 
       ball.setXY(MAX_X / 2, MAX_Y - PADDLE_H - BALL_R * 2 - 2);
@@ -828,10 +842,10 @@ void loop() {
   drawWallTiles();
 
   char* bo ="BREAKOUT";
-  const int len = strlen (bo) * FONT_SPACE * 6;
+  const int len = strlen (bo) * FONT_SPACE * 3;
   const int left = (MAX_X - len ) / 2;
 
-  Tft_drawStringWithShadow(bo, 2, 40, 3, WHITE, BLACK);
+  Tft_drawStringWithShadow(bo, 2, 40, 2, WHITE, BLACK);
 
   boolean go = false;
   do
