@@ -21,9 +21,9 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#define WITH_BEEPING
+// for sound, uncomment following line
+// #define WITH_BEEPING
 
-//#include "TFTv2_extended.h"
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include <SPI.h>
@@ -37,8 +37,6 @@
 #endif
 
 #include "joystick.cpp"
-#include <Adafruit_GFX.h>
-#include <Adafruit_ST7735.h>
 
 #ifdef WITH_BEEPING
 #include "beeping.cpp"
