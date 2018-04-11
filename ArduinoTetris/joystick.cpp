@@ -31,8 +31,8 @@
 
 // digital pin
 
-#define FIREPIN     3  // D3 to start and drop block
-#define ROTATEPIN   2  // D2 to start and drop block
+#define FIREPIN     3  // D3 (A) to start and drop block
+#define ROTATEPIN   2  // D2 (B) to rotate block
 
 // joystick center for both axis
 
