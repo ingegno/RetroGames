@@ -11,9 +11,9 @@ NL: Tetris speel je met de joystick en de twee knoppen (A om te starten en blok 
 ![Tetris](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameTetris.jpg "Tetris")
 
 ## Snake
-EN: In Snake you are a snake that needs to eat strawberries. Try to survive as long as possible. Use the joystick to move around.
+EN: In Snake you are a snake that needs to eat strawberries. Try to survive as long as possible. Use the joystick to move around or the A and B button to go left or right.
 
-NL: In Snake ben je een slang die aarbeien moet eten. Probeer zo lang mogelijk te overleven. Gebruik de joystick om te bewegen.
+NL: In Snake ben je een slang die aarbeien moet eten. Probeer zo lang mogelijk te overleven. Gebruik de joystick om te bewegen, of de A en B knop om links of rechts af te slaan.
 
 ![Snake](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameSnake.jpg "Snake")
 
@@ -23,3 +23,10 @@ EN: Flappy Bird is very, very difficult. Fly the bird between the holes! One but
 NL: Flappy Bird is heel, heel moeilijk. Vlieg met de vogel tussen de gaten! Slechts 1 knop nodig: Spring!
 
 ![Flappy Bird](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameFlappy.jpg "Flappy Bird")
+
+## Breakout
+EN: Destroy with the paddle all blocks. On level up you obtain an extra live, but there is an extra row and ball goes a little bit faster. Controls: Joystick + A button to start and serve
+
+NL: Vernietig alle blokken. Bij Level Up krijg je een extra leven, maar er is een extra rij en de bal gaat een beetje sneller. Controle: Joystick + A knop om te starten en te serveren.
+
+![Breakout](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameBreakout.jpg "Breakout")
