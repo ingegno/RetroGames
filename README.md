@@ -55,6 +55,6 @@ NL: Simple versie van PacMan als een stipje. Ren rond, wordt niet gevangen door 
 
 
 ## Race
-EN: Race with your sprite and avoid falling blocks. This directory contains an xml you can upload to [Blockly4Arduino](https://blokkencode.ingegno.be/index_en.html) to make the game.
+EN: Race with your sprite and avoid falling blocks. This directory contains an xml you can upload to [Blockly4Arduino](http://blokkencode.ingegno.be/index_en.html) to make the game.
 
-NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat een xml welke je kan laden in  [Blockly4Arduino](https://blokkencode.ingegno.be/index.html) om het spel te maken.
+NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat een xml welke je kan laden in  [Blockly4Arduino](http://blokkencode.ingegno.be/index.html) om het spel te maken.
