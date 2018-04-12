@@ -45,3 +45,9 @@ NL: Speel een Pong match tegen de computer of een friend. Als alleen, gebruik A 
 
 ![Pong](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGamePong.jpg "Pong")
 
+## PacMan Dot Version
+EN: Simple Dot version of PacMan. Run around, don't get caught by the ghosts. When you eat a coulered dot, you can chase the ghosts. Only one board. Use Joystick to move, A button to start.
+
+NL: Simple versie van PacMan als een stipje. Ren rond, wordt niet gevangen door spoken. Als je een gekleurde stip eet kun je op de spoken jagen. Gebruik Joystick om te bewegen, A knop om te starten.
+
+![PacMan](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGamePacMan.jpg "PacMan")
