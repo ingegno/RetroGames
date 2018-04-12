@@ -3,6 +3,13 @@ EN: Arduino Retro Games installable on the [Ingegno](https://www.facebook.com/In
 
 NL: Arduino Retro Games instaleerbaar op de [Ingegno](https://www.facebook.com/IngegnoMakerSpace/) [Retro Game console](https://docs.google.com/document/d/1rd5WztljQ4R-4YQH1UzbRDuTeg8SeEte_eZYg9qlx8Y/edit?usp=sharing) 
 
+You can play / Je kan spelen:
+* Tetris
+* Snake
+* Flappy Bird
+* Breakout
+* Pong (1 and 2 player mode)
+
 ## Tetris
 EN: Tetris plays with the joystick and the two buttons (A to start and drop, B to rotate)
 
@@ -30,3 +37,11 @@ EN: Destroy with the paddle all blocks. On level up you obtain an extra live, bu
 NL: Vernietig alle blokken. Bij Level Up krijg je een extra leven, maar er is een extra rij en de bal gaat een beetje sneller. Controle: Joystick + A knop om te starten en te serveren.
 
 ![Breakout](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameBreakout.jpg "Breakout")
+
+## Pong
+EN: Play a match of Pong against the computer or a friend. If alone, use A and B button to change the paddle. If with 2, second player uses Joystick.
+
+NL: Speel een Pong match tegen de computer of een friend. Als alleen, gebruik A en B knop voor je racket bovenaan het scherm. Als met 2, de tweede speler gebruikt de Joystick.
+
+![Pong](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGamePong.jpg "Pong")
+
