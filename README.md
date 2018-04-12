@@ -9,6 +9,7 @@ You can play / Je kan spelen:
 * Flappy Bird
 * Breakout
 * Pong (1 and 2 player mode)
+* Race
 
 ## Tetris
 EN: Tetris plays with the joystick and the two buttons (A to start and drop, B to rotate)
@@ -51,3 +52,9 @@ EN: Simple Dot version of PacMan. Run around, don't get caught by the ghosts. Wh
 NL: Simple versie van PacMan als een stipje. Ren rond, wordt niet gevangen door spoken. Als je een gekleurde stip eet kun je op de spoken jagen. Gebruik Joystick om te bewegen, A knop om te starten.
 
 ![PacMan](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGamePacMan.jpg "PacMan")
+
+
+## Race
+EN: Race with your sprite and avoid falling blocks. This directory contains an xml you can upload to [Blockly4Arduino](https://blokkencode.ingegno.be/index_en.html) to make the game.
+
+NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat een xml welke je kan laden in  [Blockly4Arduino](https://blokkencode.ingegno.be/index.html) om het spel te maken.
