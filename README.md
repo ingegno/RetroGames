@@ -51,7 +51,7 @@ EN: Simple Dot version of PacMan. Run around, don't get caught by the ghosts. Wh
 
 NL: Simple versie van PacMan als een stipje. Ren rond, wordt niet gevangen door spoken. Als je een gekleurde stip eet kun je op de spoken jagen. Gebruik Joystick om te bewegen, A knop om te starten.
 
-![PacMan](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGamePacMan.jpg "PacMan")
+![PacMan](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGamePacman.jpg "PacMan")
 
 
 ## Race
