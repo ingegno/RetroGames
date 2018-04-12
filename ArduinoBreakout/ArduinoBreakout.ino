@@ -657,6 +657,7 @@ class Breakout
       // blank board
 
       ROWS = STARTROWS;
+      faster = 0;
       
       Tft.fillRect(0,            0, MAX_X,             BOARD_TOP,            SCOREBOARD_COLOR);
       Tft.fillRect(0,            0, BOARD_LEFT - 1,    MAX_Y - PADDLE_H - 2, SCOREBOARD_COLOR);
