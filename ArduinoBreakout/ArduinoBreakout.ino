@@ -32,7 +32,7 @@
 int     ROWS  =     STARTROWS;
 #define COLS                8
 
-//TFT resolution 240*320
+//TFT resolution 128*160
 #define MIN_X 0
 #define MIN_Y 0
 #define MAX_X 128

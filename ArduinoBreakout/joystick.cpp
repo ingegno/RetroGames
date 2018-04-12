@@ -67,12 +67,20 @@ class Joystick
       return getPosition(YPIN) * +1;
     }
 
+    static boolean A()
+    {
+      return digitalRead(FIREPIN) == HIGH;
+    }
     static boolean fire()
     {
       return digitalRead(FIREPIN) == HIGH;
     }
 
     static boolean RotatePushed()
+    {
+      return digitalRead(ROTATEPIN) == HIGH;
+    }
+    static boolean B()
     {
       return digitalRead(ROTATEPIN) == HIGH;
     }
