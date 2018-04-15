@@ -33,6 +33,7 @@
 
 #define FIREPIN     3  // D3 (A) to start and drop block
 #define ROTATEPIN   2  // D2 (B) to rotate block
+#define JOYSTICKPIN 4  // D4 press joystick
 
 // joystick center for both axis
 
@@ -48,13 +49,24 @@ class Joystick
     static const int SOFT = 1;
     static const int HARD = 2;
     static const int HARDER = 3;
+    
+    int FIREPINPRESSED;   //HIGH
+    int ROTATEPINPRESSED; //HIGH
 
-    static void init ()
+    void init ()
     {
-      //pinMode ( FIREPIN, INPUT_PULLUP ); //if no pullup resistor
-      pinMode ( FIREPIN, INPUT );
-      //pinMode ( ROTATEPIN, INPUT_PULLUP );
-      pinMode ( ROTATEPIN, INPUT );
+      FIREPINPRESSED = HIGH;
+      ROTATEPINPRESSED = HIGH;
+      pinMode ( FIREPIN, INPUT_PULLUP ); //if no pullup resistor
+      //pinMode ( FIREPIN, INPUT );
+      pinMode ( ROTATEPIN, INPUT_PULLUP );
+      //pinMode ( ROTATEPIN, INPUT );
+      //we test if LOW when unpressed
+      if (digitalRead(FIREPIN)==HIGH && digitalRead(ROTATEPIN)==HIGH) {
+        FIREPINPRESSED = LOW;
+        ROTATEPINPRESSED = LOW;
+      }
+      pinMode ( JOYSTICKPIN, INPUT_PULLUP );
     }
 
     static int getX()
@@ -67,22 +79,37 @@ class Joystick
       return getPosition(YPIN) * +1;
     }
 
-    static boolean fire()
+    boolean A()
     {
-      return digitalRead(FIREPIN) == HIGH;
+      return digitalRead(FIREPIN) == FIREPINPRESSED;
     }
 
-    static boolean RotatePushed()
+    boolean fire()
     {
-      return digitalRead(ROTATEPIN) == HIGH;
+      return digitalRead(FIREPIN) == FIREPINPRESSED;
     }
 
-    static void waitForRelease()
+    boolean RotatePushed()
+    {
+      return digitalRead(ROTATEPIN) == ROTATEPINPRESSED;
+    }
+
+    boolean B()
+    {
+      return digitalRead(ROTATEPIN) == ROTATEPINPRESSED;
+    }
+    
+    static boolean JoystickPressed()
+    {
+      return digitalRead(JOYSTICKPIN) == LOW;
+    }
+
+    void waitForRelease()
     {
       while (fire());
     }
 
-    static void waitForRelease(int howLong)
+    void waitForRelease(int howLong)
     {
       int c = 0;
       do
@@ -93,7 +120,7 @@ class Joystick
       while ((fire() || getY() != 0 || getX() != 0) && c < howLong);
     }
 
-    static void waitForClick()
+    void waitForClick()
     {
       while (!fire());
     }

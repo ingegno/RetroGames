@@ -37,6 +37,7 @@
 #endif
 
 #include "joystick.cpp"
+Joystick js;
 
 #ifdef WITH_BEEPING
 #include "beeping.cpp"
@@ -368,7 +369,7 @@ class Tetris
       // display new shape
       if ( newShape )
       {
-        Joystick::waitForRelease(INPUT_WAIT_NEW_SHAPE);
+        js.waitForRelease(INPUT_WAIT_NEW_SHAPE);
         newShape = false;
 
         // a new shape enters the game
@@ -476,7 +477,7 @@ class Tetris
       }
     }
     
-    if ( Joystick::fire() )
+    if ( js.fire() )
     {
       while ( !touches(0, 1, 0 ))
       {
@@ -487,10 +488,10 @@ class Tetris
     }
 
     int my = Joystick::getY();
-    if (( (Joystick::RotatePushed() || my == -Joystick::HARD) && waited > INPUT_WAIT_ROT ) || 
+    if (( (js.RotatePushed() || my == -Joystick::HARD) && waited > INPUT_WAIT_ROT ) || 
           ( my == -Joystick::HARDER && waited > INPUT_WAIT_ROT / 2 ))
     {
-      if ((Joystick::getY() < 0 || Joystick::RotatePushed() ) && !touches(0, 0, 1))
+      if ((Joystick::getY() < 0 || js.RotatePushed() ) && !touches(0, 0, 1))
       {
         rot++;
         rot %= shapes[current];
@@ -737,7 +738,7 @@ void setup() {
 #endif
 
   // initialize joystick
-  Joystick::init();
+  js.init();
 }
 
 void loop() {
@@ -764,10 +765,10 @@ void drawPreGameScreen()
   delay(700);
   // start playing tetris theme
   Sequencer::start();
+  delay(1500);
 #endif
 
-  delay(1500);
-  Joystick::waitForClick();
+  js.waitForClick();
 
 #ifdef WITH_BEEPING
   // stop playing tetris theme
@@ -775,7 +776,7 @@ void drawPreGameScreen()
 #endif
 
   delay(1500);
-  Joystick::waitForClick();
+  js.waitForClick();
 }
 
 void gameOver()
@@ -792,7 +793,7 @@ void gameOver()
   Beeping::beep(200, 600);
 #endif
   delay(1500);
-  Joystick::waitForClick();
+  js.waitForClick();
 }
 
 
