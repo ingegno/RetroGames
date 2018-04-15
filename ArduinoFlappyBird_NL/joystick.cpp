@@ -1,8 +1,10 @@
 /*
     Arduino Tetris
     Copyright (C) 2015 João André Esteves Vilaça 
+    Copyright (C) 2017  Benny Malengier
     
     https://github.com/vilaca/Handheld-Color-Console
+    https://github.com/ingegno/RetroGames
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -6,6 +6,7 @@
 //
 // Ported to Arduino Nano 12/4/2018 - Ingegno https://github.com/ingegno/RetroGames 
 //  * added 2 player mode 
+//  * Joystick class
 
 #include <Adafruit_ST7735.h>
 #include <SPI.h>
@@ -55,7 +56,7 @@ void setup(){
   tft.fillScreen(ST7735_BLACK);  // clear display
   tft.setRotation(1);            // landscape (as on Esplora)
   
-  Joystick::init();
+  js.init();
   
   // Draw splash screen text
   tft.setTextColor(ST7735_YELLOW, ST7735_BLACK);
@@ -72,7 +73,7 @@ void setup(){
   tft.println(" ");
   tft.println("Press Joy: single player");
   tft.println("Press A  : 2 player mode");
-  while( ! Joystick::JoystickPressed() && ! Joystick::A()) 
+  while( ! Joystick::JoystickPressed() && ! js.A()) 
         ;                                    // New game when swtich 4 is pressed
   if (Joystick::JoystickPressed()) 
     oneplayer = true;
@@ -164,8 +165,8 @@ void loop() {
  DrawCourt(0);  // Draw court line(s)
 
 // see if player is using A & B buttons to signal they wish t move the player paddle
-  R = Joystick::B(); 
-  L = Joystick::A(); 
+  R = js.B(); 
+  L = js.A(); 
 
   playerPaddle=playerPaddle+R; //These equations are for the movement of the paddle, R, L, D, and U are all boolean.  paddles initially equal 48. This is so
                 //at startup the paddles are at center.  
@@ -253,7 +254,7 @@ void loop() {
     tft.setCursor(8,90);
     tft.println("Press Joy: Restart 1 player");
     tft.print  ("Press A  : Restart 2 player");
-    while( !(Joystick::JoystickPressed()) && !(Joystick::A()))
+    while( !(Joystick::JoystickPressed()) && !(js.A()))
           ;                                    // New game when joystick is pressed
     if (Joystick::JoystickPressed()) 
       oneplayer = true;

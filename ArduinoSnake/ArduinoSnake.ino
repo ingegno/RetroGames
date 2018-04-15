@@ -26,6 +26,9 @@ Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 #define BUTTON_LEFT 5
 #define BUTTON_ROTATERIGHT 6
 
+int FIREPINPRESSED;   //HIGH
+int ROTATEPINPRESSED; //HIGH
+    
 uint16_t pixelColor;
 uint8_t buttonPressed, currentDirection, rotatePressed=false;
 boolean collision, appleOn, displayEnd, specialOn, allowSpecial, showTitle = true;
@@ -33,10 +36,16 @@ int head, timer, snakeSize, score, pixelLocationXAxis, pixelLocationYAxis, x[300
     appleX, appleY, yMultiplier, selection = 100, difficulty, specialX, specialY, specialTime;
 
 void setup(void) {
-  //pinMode ( ROTATELEFT, INPUT_PULLUP ); //if no pullup resistor
-  pinMode ( ROTATELEFT, INPUT );
-  //pinMode ( ROTATERIGHT, INPUT_PULLUP );
-  pinMode ( ROTATERIGHT, INPUT );
+  FIREPINPRESSED = HIGH;
+  ROTATEPINPRESSED = HIGH;
+  pinMode ( ROTATELEFT, INPUT_PULLUP ); //if no pullup resistor
+  pinMode ( ROTATERIGHT, INPUT_PULLUP );
+  //we test if LOW when unpressed
+  if (digitalRead(ROTATELEFT)==HIGH && digitalRead(ROTATERIGHT)==HIGH) {
+    FIREPINPRESSED = LOW;
+    ROTATEPINPRESSED = LOW;
+  }
+  
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(0x0000);
   if (showTitle)
@@ -62,11 +71,11 @@ void setup(void) {
 }
 
 uint8_t readButton(void) {
-  if (digitalRead(ROTATELEFT))
+  if (digitalRead(ROTATELEFT)==FIREPINPRESSED)
   {
       return BUTTON_ROTATELEFT;
   }
-  else if (digitalRead(ROTATERIGHT))
+  else if (digitalRead(ROTATERIGHT)==ROTATEPINPRESSED)
   {
       return BUTTON_ROTATERIGHT;
   }

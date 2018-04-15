@@ -53,6 +53,7 @@ int     ROWS  =     STARTROWS;
 #include <Adafruit_ST7735.h>
 
 Adafruit_ST7735 Tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+Joystick js;
 
 void Tft_drawString(String text, int x, int y, int size, uint16_t color) {
   Tft.setCursor(x, y);
@@ -230,7 +231,7 @@ void drawWallTiles(int shift=0)
 void animateScreen()
 {
   int addr = 320;
-  while(addr >= 0 && !Joystick::fire())
+  while(addr >= 0 && !js.fire())
   {
     //Tft.scroll(addr);
     addr-=2;
@@ -632,8 +633,6 @@ class Scoreboard {
 
 class Breakout
 {
-  Joystick js;
-
   Ball ball;
   
   Paddle paddle;
@@ -695,7 +694,7 @@ class Breakout
       
         cursor += font_size * FONT_SPACE;
 
-        skip = skip || Joystick::fire();
+        skip = skip || js.fire();
 
         if ( skip ) continue;
 
@@ -708,7 +707,7 @@ class Breakout
         }
       }
     
-      while (!Joystick::fire());
+      while (!js.fire());
     }
 
   private:
@@ -728,7 +727,7 @@ class Breakout
           ball.draw();
           delay(5);
         }
-      } while (!Joystick::fire());
+      } while (!js.fire());
     }
 
     void play()
@@ -831,7 +830,7 @@ void setup() {
   
   Tft_init();  // init TFT library
 
-  Joystick::init();
+  js.init();
 
 #ifdef WITH_BEEPING
   Beeping::turnOn();
@@ -858,7 +857,7 @@ void loop() {
     unsigned long last = millis();
     do
     {
-      go = Joystick::fire();
+      go = js.fire();
       
       if ( millis() - last > 8000 ) break;
       
