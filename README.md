@@ -63,3 +63,15 @@ NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat twee xml welk
 ![Race](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameRace.jpg "Race") 
 ![RaceStart](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameRaceStart.jpg "RaceStart")
 
+# Construction
+## Case
+EN: The case can be lasercut with the following svg file: 
+
+NL: Het omhulsel kun je lasercutten met de volgende svg file:
+
+![console](https://github.com/ingegno/RetroGames/blob/master/IngegnoRetroGameConsole/IngegnoRetroGame.svg "svg file")
+
+## Wiring
+EN: The wiring and components can be found in the manual: [Retro Game console Manual](https://docs.google.com/document/d/1rd5WztljQ4R-4YQH1UzbRDuTeg8SeEte_eZYg9qlx8Y/edit?usp=sharing) 
+
+NL: De bedrading en componenten kan gevonden worden in de handleiding: [Retro Game console Manual](https://docs.google.com/document/d/1rd5WztljQ4R-4YQH1UzbRDuTeg8SeEte_eZYg9qlx8Y/edit?usp=sharing) 
