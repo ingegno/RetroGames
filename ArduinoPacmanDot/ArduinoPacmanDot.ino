@@ -101,7 +101,7 @@ uint8_t getControl(void) {
   else if(analogRead(1) < 400) { return UP;}
   else if(analogRead(0) > 600) { return LEFT; }
   else if(analogRead(0) < 400) { return RIGHT;}
-  else if (Joystick::fire()) {return BUTTON;}
+  else if (js.fire()) {return BUTTON;}
 
   //if (digitalRead(JOYUP) == LOW) { return UP; }
   //if (digitalRead(JOYDOWN) == LOW) { return DOWN; }
@@ -140,7 +140,7 @@ void controlDelayMs(uint16_t ms) {
 
 void setup() {
   // put your setup code here, to run once:
-  Joystick::init();
+  js.init();
 }
 
 void loop() {

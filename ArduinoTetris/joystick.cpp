@@ -69,11 +69,13 @@ class Joystick
       pinMode ( JOYSTICKPIN, INPUT_PULLUP );
     }
 
+    // X positie als waarde tussen -4 en 4
     static int getX()
     {
       return getPosition(XPIN) * -1;
     }
 
+    // Y positie als waarde tussen -4 en 4
     static int getY()
     {
       return getPosition(YPIN) * +1;
