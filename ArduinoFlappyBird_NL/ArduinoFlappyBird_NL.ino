@@ -1,4 +1,4 @@
-// WERKT ENKEL MET IDE 1.5.8 en 1.6.0
+// WERKT MET IDE 1.5.8, 1.6.0, 1.8.5
 // parameters aangepast, zie comments
 // NEDERLANDSE VERSIE
 // WERKT MET 1.8TFT SPI 128x160 V1.1 DISPLAY
@@ -37,6 +37,8 @@
 #include <Adafruit_ST7735.h>
 #include <SPI.h>
 #include <EEPROM.h>
+#include "joystick.cpp"
+Joystick js;
 
 // initialize Sainsmart 1.8" TFT screen
 // (connect pins accordingly or change these values)
@@ -71,7 +73,6 @@ static Adafruit_ST7735 TFT = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);
 #define GRASSH            4     // grass height (inside floor, starts at floor y)
 
 int maxScore = 0;
-const int buttonPin = 3;
 // background
 const unsigned int BCKGRDCOL = TFT.Color565(138, 235, 244);
 // bird
@@ -135,10 +136,8 @@ static short tmpx, tmpy;
 // initial setup
 // ---------------
 void setup() {
-  // initialize the push button on pin 2 as an input
-  //DDRD &= ~(1<<PD2);
-  pinMode(buttonPin, INPUT);
-  digitalWrite(buttonPin, HIGH);
+  // initialize the push button 
+  js.init();
   // resetMaxScore();      // verwijder uit commentaar om max score te resetten
   // initialize a ST7735S chip, black tab
   TFT.initR(INITR_BLACKTAB);
@@ -190,7 +189,7 @@ void game_loop() {
       // ===============
       // input
       // ===============
-      if ( (PIND & (1 << PD3)) ) {
+      if ( js.A() ) {
         // if the bird is not too close to the top of the screen apply jump force
         if (bird.y > BIRDH2 * 0.5) bird.vel_y = -JUMP_FORCE;
         // else zero velocity
@@ -334,10 +333,7 @@ void game_start() {
   TFT.setTextColor(ST7735_RED);
   TFT.setCursor( TFTW2 - (17 * 3) - 1, TFTH2 + 54);
   TFT.println("DRUK OP LINKSE KNOP");
-  while (1) {
-    // wait for push button
-    if ( (PIND & (1 << PD3)) ) break;
-  }
+  js.waitForClick();
 
   // init game settings
   game_init();
@@ -394,10 +390,8 @@ void game_over() {
   TFT.setCursor( 10, 130);
   TFT.print("MAXIMUM SCORE:");
   TFT.print(maxScore);
-  while (1) {
-    // wait for push button
-    if ( !(PIND & (1 << PD2)) ) break;
-  }
+  // wait for push button
+  js.waitForClick();
 }
 
 void EEPROM_Write(int *num, int MemPos)
