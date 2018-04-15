@@ -7,3 +7,8 @@ NL: Dit is een spel welke kinderen kunnen maken met [Blockly4Arduino](http://blo
 EN: The example race game from the [manual](https://docs.google.com/document/d/1rd5WztljQ4R-4YQH1UzbRDuTeg8SeEte_eZYg9qlx8Y/edit?usp=sharing) 
 
 NL: Het voorbeeld race spel van de [handleiding](https://docs.google.com/document/d/1rd5WztljQ4R-4YQH1UzbRDuTeg8SeEte_eZYg9qlx8Y/edit?usp=sharing) 
+
+## RetroGame05_game_final.xml
+EN: Final special race game version extended by Saya. Score added, extra falling blocks as you advance, and your rocket can move in the bottom part of the screen
+
+NL: Finale speciale versie van het race game gemaakt door Saya. Score toegevoegd, extra vallende blokken als je verder geraakt in het spel, en je raket kan bewegen over de volledige onderste zone van het scherm.
