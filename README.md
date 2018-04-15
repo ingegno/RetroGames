@@ -9,6 +9,7 @@ You can play / Je kan spelen:
 * Flappy Bird
 * Breakout
 * Pong (1 and 2 player mode)
+* PacMan
 * Race
 
 ## Tetris
@@ -55,6 +56,10 @@ NL: Simple versie van PacMan als een stipje. Ren rond, wordt niet gevangen door 
 
 
 ## Race
-EN: Race with your sprite and avoid falling blocks. This directory contains an xml you can upload to [Blockly4Arduino](http://blokkencode.ingegno.be/index_en.html) to make the game.
+EN: Race with your sprite and avoid falling blocks. This directory contains two xml you can upload to [Blockly4Arduino](http://blokkencode.ingegno.be/index_en.html) to see how you can make the game. One is the easy version from the manual, the other is an advanced version with score, extra blocks, and moving rocket! The arduino code of this last is present to: use the Joystick only to start (press) and move around.
 
-NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat een xml welke je kan laden in  [Blockly4Arduino](http://blokkencode.ingegno.be/index.html) om het spel te maken.
+NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat twee xml welke je kan laden in  [Blockly4Arduino](http://blokkencode.ingegno.be/index.html) om te zien hoe het spel gemaakt is. Zo kun je eenvoudig spel aanpassen. Een xml is de simpele versie, en een is de speciale finale versie met score, extra blokken en bewegende raket. De arduino code van deze laatste is ook aanwezig, gebruik de Joystick om te starten (indrukken) en rond te bewegen.
+
+![Race](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameRace.jpg "Race") 
+![RaceStart](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameRaceStart.jpg "RaceStart")
+
