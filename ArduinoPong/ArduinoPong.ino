@@ -30,6 +30,8 @@
 #define BALLSIZE     4  //radius size of the ball
 #define PADDLEREGION 3  //pixels around paddle that still hit ball
 
+#define slowdownspeed 5 //game too fast, increase this to slow it down. A delay in ms
+
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);  // define tft display (use Adafruit library) hw (if you add osi and sclk it will slow too much)
 //obtain a joystick
 Joystick js;
@@ -187,7 +189,7 @@ void loop() {
   }
   else {
   };
-  //bounde ball back if we hit it
+  //bounce ball back if we hit it
   if ((BPX<=(computerPaddle+PADDLESIZE+BALLSIZE+PADDLEREGION)) 
       && (BPX>=(computerPaddle-BALLSIZE-PADDLEREGION)) && (BPY==149)){
     (A=(-1*A));
@@ -200,6 +202,7 @@ void loop() {
   }
   else{
   };
+  delay(slowdownspeed);
   
   if (BPY>=MAX_Y || BPY <=0){    // someone scored!
     if (BPY >= MAX_Y) 
