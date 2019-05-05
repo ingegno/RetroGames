@@ -33,8 +33,8 @@
 //
 // =============================================================================
 
-#include <Adafruit_GFX.h>
-#include <Adafruit_ST7735.h>
+#include <Adafruit_GFX.h> // version 1.3.6
+#include <Adafruit_ST7735.h> // version 1.2.7
 #include <SPI.h>
 #include <EEPROM.h>
 #include "joystick.cpp"
@@ -74,29 +74,29 @@ static Adafruit_ST7735 TFT = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);
 
 int maxScore = 0;
 // background
-const unsigned int BCKGRDCOL = TFT.Color565(138, 235, 244);
+const unsigned int BCKGRDCOL = TFT.color565(138, 235, 244);
 // bird
-const unsigned int BIRDCOL = TFT.Color565(255, 254, 174);
+const unsigned int BIRDCOL = TFT.color565(255, 254, 174);
 // pipe
-const unsigned int PIPECOL  = TFT.Color565(99, 255, 78);
+const unsigned int PIPECOL  = TFT.color565(99, 255, 78);
 // pipe highlight
-const unsigned int PIPEHIGHCOL  = TFT.Color565(250, 255, 250);
+const unsigned int PIPEHIGHCOL  = TFT.color565(250, 255, 250);
 // pipe seam
-const unsigned int PIPESEAMCOL  = TFT.Color565(0, 0, 0);
+const unsigned int PIPESEAMCOL  = TFT.color565(0, 0, 0);
 // floor
-const unsigned int FLOORCOL = TFT.Color565(246, 240, 163);
+const unsigned int FLOORCOL = TFT.color565(246, 240, 163);
 // grass (col2 is the stripe color)
-const unsigned int GRASSCOL  = TFT.Color565(141, 225, 87);
-const unsigned int GRASSCOL2 = TFT.Color565(156, 239, 88);
+const unsigned int GRASSCOL  = TFT.color565(141, 225, 87);
+const unsigned int GRASSCOL2 = TFT.color565(156, 239, 88);
 
 // bird sprite
 // bird sprite colors (Cx name for values to keep the array readable)
 #define C0 BCKGRDCOL
-#define C1 TFT.Color565(195,165,75)
+#define C1 TFT.color565(195,165,75)
 #define C2 BIRDCOL
 #define C3 ST7735_WHITE
 #define C4 ST7735_RED
-#define C5 TFT.Color565(251,216,114)
+#define C5 TFT.color565(251,216,114)
 static unsigned int birdcol[] =
 { C0, C0, C1, C1, C1, C1, C1, C0,
   C0, C1, C2, C2, C2, C1, C3, C1,
@@ -418,4 +418,3 @@ void resetMaxScore()
 {
   EEPROM_Write(&maxScore, 0);
 }
-
