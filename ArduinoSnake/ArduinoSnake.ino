@@ -1,4 +1,4 @@
-#include <TrueRandom.h>
+#include <TrueRandom.h>  // https://github.com/sirleech/TrueRandom
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include <SPI.h>
@@ -432,4 +432,3 @@ void displayEndingScreen(){
   tft.print(score);
   displayEnd = false;
 }
-
