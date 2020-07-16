@@ -68,7 +68,7 @@ NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat twee xml welk
 ## Etch-A-Sketch
 EN: Make a fleeting sketch. This directory contains an xml you can upload to [Blockly4Arduino](http://blokkencode.ingegno.be/index_en.html) to see how you can make this game and adapt it. The ino file is our spin. Use the joystick to move your brush around. Use the A button to change the color of the brush, and the B button to reset the background (a different color every time).
 
-NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat twee xml welke je kan laden in  [Blockly4Arduino](http://blokkencode.ingegno.be/index.html) om te zien hoe het spel gemaakt is. Zo kun je eenvoudig spel aanpassen. Een xml is de simpele versie, en een is de speciale finale versie met score, extra blokken en bewegende raket. De arduino code van deze laatste is ook aanwezig, gebruik de Joystick om te starten (indrukken) en rond te bewegen.
+NL: Maak een efemerische schets. Deze map bevat een xml welke je kan laden in  [Blockly4Arduino](http://blokkencode.ingegno.be/index.html) om te zien hoe het spel gemaakt is en om het aan te passen aan je wensen. De ino file is onze versie die je in de Arduino IDE kunt openen. Gebruik de joystick om je penseel te bewegen. Gebruik de A knop om de kleur te wijzigen. Gebruik de B knop om de achtergrond te resetten (telkens een andere kleur).
 
 ![Etch-A-Sketch](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameEtchASketch.jpg "Etch-A-Sketch") 
 
