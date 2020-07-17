@@ -11,6 +11,7 @@ You can play / Je kan spelen:
 * Pong (1 and 2 player mode)
 * PacMan
 * Race
+* Etch-A-Sketch
 
 ## Tetris
 EN: Tetris plays with the joystick and the two buttons (A to start and drop, B to rotate)
@@ -63,6 +64,14 @@ NL: Race met je sprite en ontwijk vallende blokken. Deze map bevat twee xml welk
 ![Race](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameRace.jpg "Race") 
 ![RaceStart](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameRaceStart.jpg "RaceStart")
 
+
+## Etch-A-Sketch
+EN: Make a fleeting sketch. This directory contains an xml you can upload to [Blockly4Arduino](http://blokkencode.ingegno.be/index_en.html) to see how you can make this game and adapt it. The ino file is our spin. Use the joystick to move your brush around. Use the A button to change the color of the brush, and the B button to reset the background (a different color every time).
+
+NL: Maak een efemerische schets. Deze map bevat een xml welke je kan laden in  [Blockly4Arduino](http://blokkencode.ingegno.be/index.html) om te zien hoe het spel gemaakt is en om het aan te passen aan je wensen. De ino file is onze versie die je in de Arduino IDE kunt openen. Gebruik de joystick om je penseel te bewegen. Gebruik de A knop om de kleur te wijzigen. Gebruik de B knop om de achtergrond te resetten (telkens een andere kleur).
+
+![Etch-A-Sketch](https://github.com/ingegno/RetroGames/raw/master/docs/RetroGameEtchASketch.jpg "Etch-A-Sketch") 
+
 # Construction
 ## Case
 EN: The case can be lasercut with the following svg file: 
@@ -70,6 +79,8 @@ EN: The case can be lasercut with the following svg file:
 NL: Het omhulsel kun je lasercutten met de volgende svg file:
 
 ![console](https://github.com/ingegno/RetroGames/blob/master/IngegnoRetroGameConsole/IngegnoRetroGame.svg "svg file")
+
+You find a 10 piece version on 100x60 cm plate is available in the same directory.
 
 ## Wiring
 EN: The wiring and components can be found in the manual: [Retro Game console Manual](https://docs.google.com/document/d/1rd5WztljQ4R-4YQH1UzbRDuTeg8SeEte_eZYg9qlx8Y/edit?usp=sharing) 
